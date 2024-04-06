@@ -20,6 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Experiment < ApplicationRecord
+  auto_strip_attributes :title, squish: true
+
   belongs_to :primary, class_name: "Example", optional: true
   belongs_to :user
   has_many :examples

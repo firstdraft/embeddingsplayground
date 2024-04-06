@@ -23,6 +23,8 @@
 class Example < ApplicationRecord
   after_commit :set_first_primary
 
+  auto_strip_attributes :content, squish: true
+
   validates :content, uniqueness: { scope: :experiment_id }
 
   belongs_to :experiment

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
+gem "auto_strip_attributes", "~> 2.6"
 gem "bootsnap", require: false
 gem "devise"
 gem "importmap-rails"
