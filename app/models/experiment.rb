@@ -27,6 +27,6 @@ class Experiment < ApplicationRecord
   has_many :examples
 
   def to_s
-    title
+    primary ? primary.content : title
   end
 end
