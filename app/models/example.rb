@@ -30,6 +30,8 @@ class Example < ApplicationRecord
   belongs_to :experiment
   belongs_to :user
 
+  has_neighbors :embedding
+
   def to_s
     content
   end

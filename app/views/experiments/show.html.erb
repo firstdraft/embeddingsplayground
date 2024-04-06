@@ -3,11 +3,9 @@
 <%= render @experiment %>
 
 <ul>
-  <% @experiment.examples.order(:created_at).each do |example| %>
+  <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").each do |example| %>
     <li>
       <%= example.content %>
-
-      <%= example.embedding %>
     </li>
   <% end %>
 
