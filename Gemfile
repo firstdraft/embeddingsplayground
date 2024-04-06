@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 gem "bootsnap", require: false
+gem "devise"
 gem "importmap-rails"
 gem "jbuilder"
 gem "neighbor"
