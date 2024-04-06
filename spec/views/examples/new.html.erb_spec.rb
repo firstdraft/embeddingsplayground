@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "examples/new", type: :view do
-  before(:each) do
+RSpec.describe "examples/new" do
+  before do
     assign(:example, Example.new(
       experiment: nil,
       content: "MyText",
@@ -14,7 +14,6 @@ RSpec.describe "examples/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", examples_path, "post" do
-
       assert_select "input[name=?]", "example[experiment_id]"
 
       assert_select "textarea[name=?]", "example[content]"

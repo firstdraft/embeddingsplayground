@@ -20,8 +20,8 @@
 #  fk_rails_...  (experiment_id => experiments.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Example, type: :model do
+RSpec.describe Example do
   pending "add some examples to (or delete) #{__FILE__}"
 end

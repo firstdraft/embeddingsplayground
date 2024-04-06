@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "examples/edit", type: :view do
+RSpec.describe "examples/edit" do
   let(:example) {
     Example.create!(
       experiment: nil,
@@ -10,7 +10,7 @@ RSpec.describe "examples/edit", type: :view do
     )
   }
 
-  before(:each) do
+  before do
     assign(:example, example)
   end
 
@@ -18,7 +18,6 @@ RSpec.describe "examples/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", example_path(example), "post" do
-
       assert_select "input[name=?]", "example[experiment_id]"
 
       assert_select "textarea[name=?]", "example[content]"

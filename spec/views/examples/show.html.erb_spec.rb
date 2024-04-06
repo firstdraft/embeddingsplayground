@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "examples/show", type: :view do
-  before(:each) do
+RSpec.describe "examples/show" do
+  before do
     assign(:example, Example.create!(
       experiment: nil,
       content: "MyText",
