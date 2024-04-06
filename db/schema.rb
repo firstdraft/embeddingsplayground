@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_002233) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_010355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_002233) do
   create_table "examples", force: :cascade do |t|
     t.bigint "experiment_id", null: false
     t.text "content"
-    t.integer "embedding"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.vector "embedding", limit: 1536
     t.index ["experiment_id"], name: "index_examples_on_experiment_id"
     t.index ["user_id"], name: "index_examples_on_user_id"
   end

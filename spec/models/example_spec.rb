@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  content       :text
-#  embedding     :integer
+#  embedding     :vector(1536)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  experiment_id :bigint           not null
