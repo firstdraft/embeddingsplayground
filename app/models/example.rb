@@ -21,12 +21,18 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Example < ApplicationRecord
+  after_commit :set_first_primary
+
+  validates :content, uniqueness: { scope: :experiment_id }
+
   belongs_to :experiment
   belongs_to :user
 
-  after_commit :set_first_primary
+  def to_s
+    content
+  end
 
   def set_first_primary
     experiment.update(primary_id: id) if experiment.primary.nil?
-  end  
+  end
 end
