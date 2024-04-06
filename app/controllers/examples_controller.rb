@@ -26,7 +26,7 @@ class ExamplesController < ApplicationController
 
     respond_to do |format|
       if @example.save
-        format.html { redirect_to example_url(@example), notice: "Example was successfully created." }
+        format.html { redirect_to @example.experiment, notice: "Example was successfully created." }
         format.json { render :show, status: :created, location: @example }
       else
         format.html { render :new, status: :unprocessable_entity }

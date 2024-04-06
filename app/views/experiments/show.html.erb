@@ -2,7 +2,19 @@
 
 <%= render @experiment %>
 
-<%= render "examples/form", example: Example.new(experiment: @experiment) %>
+<ul>
+  <% @experiment.examples.order(:created_at).each do |example| %>
+    <li>
+      <%= example.content %>
+    </li>
+  <% end %>
+
+  <li>
+    <%= render "examples/form", example: Example.new(experiment: @experiment) %>
+  </li>
+</ul>
+
+
 
 <div>
   <%= link_to "Edit this experiment", edit_experiment_path(@experiment) %> |

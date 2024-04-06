@@ -22,4 +22,5 @@
 class Experiment < ApplicationRecord
   belongs_to :primary, class_name: "Experiment", optional: true
   belongs_to :user
+  has_many :examples
 end
