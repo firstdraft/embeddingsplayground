@@ -24,6 +24,17 @@ class ExamplesController < ApplicationController
     @example = Example.new(example_params)
     @example.user = current_user
 
+    client = OpenAI::Client.new
+    
+    response = client.embeddings(
+      parameters: {
+        model: "text-embedding-3-large",
+        input: @example.content
+      }
+    )
+
+    @example.embedding = response.dig("data", 0, "embedding")
+
     respond_to do |format|
       if @example.save
         format.html { redirect_to @example.experiment, notice: "Example was successfully created." }

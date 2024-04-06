@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_010355) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.vector "embedding", limit: 1536
+    t.vector "embedding", limit: 3072
     t.index ["experiment_id"], name: "index_examples_on_experiment_id"
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
