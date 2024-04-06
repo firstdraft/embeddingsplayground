@@ -3,18 +3,18 @@
 <%= render @experiment %>
 
 <ul>
-  <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").each do |example| %>
-    <li>
-      <%= example.content %>
-    </li>
+  <% if @experiment.primary.present? %>
+    <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").where(experiment: @experiment).each do |example| %>
+      <li>
+        <%= example.content %>
+      </li>
+    <% end %>
   <% end %>
 
   <li>
     <%= render "examples/form", example: Example.new(experiment: @experiment) %>
   </li>
 </ul>
-
-
 
 <div>
   <%= link_to "Edit this experiment", edit_experiment_path(@experiment) %> |
