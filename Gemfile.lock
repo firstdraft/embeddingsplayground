@@ -156,6 +156,8 @@ GEM
     minitest (5.22.3)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    neighbor (0.3.2)
+      activerecord (>= 6.1)
     net-imap (0.4.10)
       date
       net-protocol
@@ -381,6 +383,7 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
+  neighbor
   pg (~> 1.1)
   pry-rails
   puma (>= 5.0)
