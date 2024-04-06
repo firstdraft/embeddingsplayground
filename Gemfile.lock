@@ -121,6 +121,13 @@ GEM
       railties (>= 6.1)
     drb (2.2.1)
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.1.0)
+      net-http
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.4)
@@ -164,9 +171,12 @@ GEM
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
+    multipart-post (2.4.0)
     mutex_m (0.2.0)
     neighbor (0.3.2)
       activerecord (>= 6.1)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.10)
       date
       net-protocol
@@ -328,6 +338,10 @@ GEM
       rubocop (~> 1.40)
     ruby-graphviz (1.2.5)
       rexml
+    ruby-openai (6.5.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     simple_form (5.3.0)
       actionpack (>= 5.2)
@@ -366,6 +380,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -413,6 +428,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   rubocop-rspec
+  ruby-openai
   sprockets-rails
   standard
   stimulus-rails
