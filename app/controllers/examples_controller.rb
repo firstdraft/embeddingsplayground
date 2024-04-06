@@ -22,6 +22,7 @@ class ExamplesController < ApplicationController
   # POST /examples or /examples.json
   def create
     @example = Example.new(example_params)
+    @example.user = current_user
 
     respond_to do |format|
       if @example.save

@@ -2,6 +2,8 @@
 
 <%= render @experiment %>
 
+<%= render "examples/form", example: Example.new(experiment: @experiment) %>
+
 <div>
   <%= link_to "Edit this experiment", edit_experiment_path(@experiment) %> |
   <%= link_to "Back to experiments", experiments_path %>

@@ -12,23 +12,12 @@
   <% end %>
 
   <div>
-    <%= form.label :experiment_id, style: "display: block" %>
-    <%= form.text_field :experiment_id %>
-  </div>
-
-  <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
   </div>
 
   <div>
-    <%= form.label :embedding, style: "display: block" %>
-    <%= form.number_field :embedding %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :experiment_id %>
   </div>
 
   <div>
