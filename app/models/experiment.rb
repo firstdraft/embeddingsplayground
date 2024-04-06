@@ -6,7 +6,7 @@
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  primary_id :bigint           not null
+#  primary_id :bigint
 #  user_id    :bigint           not null
 #
 # Indexes
@@ -20,6 +20,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Experiment < ApplicationRecord
-  belongs_to :primary
+  belongs_to :primary, optional: true
   belongs_to :user
 end
