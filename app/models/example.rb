@@ -23,4 +23,10 @@
 class Example < ApplicationRecord
   belongs_to :experiment
   belongs_to :user
+
+  after_commit :set_first_primary
+
+  def set_first_primary
+    experiment.update(primary_id: id) if experiment.primary.nil?
+  end  
 end

@@ -20,6 +20,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Experiment < ApplicationRecord
-  belongs_to :primary, optional: true
+  belongs_to :primary, class_name: "Experiment", optional: true
   belongs_to :user
 end
