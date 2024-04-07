@@ -2,19 +2,54 @@
 
 <%= render @experiment %>
 
-<ul>
-  <% if @experiment.primary.present? %>
-    <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").where(experiment: @experiment).each do |example| %>
-      <li>
-        <%= example.content %> (<%= example.neighbor_distance %>)
-      </li>
-    <% end %>
-  <% end %>
+<div>
+  <h3>Add an example</div>
 
-  <li>
-    <%= render "examples/form", example: Example.new(experiment: @experiment) %>
-  </li>
-</ul>
+  <%= render "examples/form", example: Example.new(experiment: @experiment) %>
+</div>
+
+<div style="display: flex; gap: 24px">
+  <% if @experiment.primary.present? %>
+    <div>
+      <h3>Euclidean</h3>
+
+      <table border="1">
+        <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").where(experiment: @experiment).each do |example| %>
+          <tr>
+            <td><%= example.content %></td>
+            <td><%= number_with_precision(example.neighbor_distance, precision: 4) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div>
+      <h3>Cosine</h3>
+
+      <table border="1">
+        <% @experiment.primary.nearest_neighbors(:embedding, distance: "cosine").where(experiment: @experiment).each do |example| %>
+          <tr>
+            <td><%= example.content %></td>
+            <td><%= number_with_precision(example.neighbor_distance, precision: 4) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div>
+      <h3>Inner product</h3>
+
+      <table border="1">
+        <% @experiment.primary.nearest_neighbors(:embedding, distance: "inner_product").where(experiment: @experiment).each do |example| %>
+          <tr>
+            <td><%= example.content %></td>
+            <td><%= number_with_precision(example.neighbor_distance, precision: 4) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</div>
 
 <div>
   <%= link_to "Edit this experiment", edit_experiment_path(@experiment) %> |

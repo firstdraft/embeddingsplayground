@@ -24,7 +24,7 @@ class Example < ApplicationRecord
   auto_strip_attributes :content, squish: true
   before_save :set_embedding
 
-  validates :content, uniqueness: {scope: :experiment_id}
+  # validates :content, uniqueness: {scope: :experiment_id}
 
   belongs_to :experiment
   belongs_to :user
