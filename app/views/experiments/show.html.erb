@@ -6,7 +6,7 @@
   <% if @experiment.primary.present? %>
     <% @experiment.primary.nearest_neighbors(:embedding, distance: "euclidean").where(experiment: @experiment).each do |example| %>
       <li>
-        <%= example.content %>
+        <%= example.content %> (<%= example.neighbor_distance %>)
       </li>
     <% end %>
   <% end %>

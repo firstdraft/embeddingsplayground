@@ -3,7 +3,6 @@
 # Table name: experiments
 #
 #  id         :bigint           not null, primary key
-#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  primary_id :bigint
@@ -20,13 +19,24 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Experiment < ApplicationRecord
-  auto_strip_attributes :title, squish: true
+  attr_accessor :primary_example
+
+  after_create :create_primary_example
 
   belongs_to :primary, class_name: "Example", optional: true
   belongs_to :user
   has_many :examples
 
+  def create_primary_example
+    the_primary_example = examples.create(
+      content: primary_example,
+      user: user
+    )
+
+    self.update(primary: the_primary_example)
+  end
+
   def to_s
-    primary ? primary.content : title
+    primary ? primary.content : "No primary example set"
   end
 end

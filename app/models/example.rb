@@ -21,9 +21,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Example < ApplicationRecord
-  after_commit :set_first_primary
-
   auto_strip_attributes :content, squish: true
+  before_save :set_embedding
 
   validates :content, uniqueness: {scope: :experiment_id}
 
@@ -36,7 +35,16 @@ class Example < ApplicationRecord
     content
   end
 
-  def set_first_primary
-    experiment.update(primary_id: id) if experiment.primary.nil?
+  def set_embedding
+    client = OpenAI::Client.new
+    
+    response = client.embeddings(
+      parameters: {
+        model: "text-embedding-3-large",
+        input: content
+      }
+    )
+
+    self.embedding = response.dig("data", 0, "embedding")
   end
 end

@@ -67,6 +67,6 @@ class ExperimentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def experiment_params
-    params.require(:experiment).permit(:primary_id, :user_id, :title)
+    params.require(:experiment).permit(:primary_id, :user_id, :primary_example)
   end
 end
